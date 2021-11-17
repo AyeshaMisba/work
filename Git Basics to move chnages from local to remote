@@ -1,0 +1,205 @@
+On Github:
+
+
+1. Create a github account.
+
+	navaneethan.jarvis@gmail.com
+	My Username : navaneethan-jarvis
+	My Password : ***
+	
+2. Create a public remote repository: TestRepo
+
+3. Important Links:
+	Remote Repo Link : https://github.com/navaneethan-jarvis/TestRepo.git
+	(You know how to get this from github remote repo...:-)  )
+	
+Note: 
+…or create a new repository on the command line
+
+echo "# TestRepo" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/navaneethan-jarvis/TestRepo.git
+git push -u origin main
+
+…or push an existing repository from the command line
+
+git remote add origin https://github.com/navaneethan-jarvis/TestRepo.git
+git branch -M main
+git push -u origin main
+
+
+
+On Local Workstation / Laptop:
+
+1. Install Git and verify its installation by using git --version command.
+	Sample Output : git version 2.33.1
+
+2. Configure your username and email globally in local git. This step is needed to identify who pushed / pulled code to/from remote repository.
+
+Type the below on terminal / CMD prompt.
+
+	git config --global user.name "Navaneethan S"
+	git config --global user.email navaneethan.jarvis@gmail.com
+	
+Verifying the same: 
+
+	git config --list   - shows the system, global, and local configs.
+
+user.email=navaneethan.jarvis@gmail.com
+user.name=Navaneethan S
+alias.co=checkout
+alias.ci=commit
+alias.br=branch
+alias.st=status
+alias.unstage=reset HEAD --
+alias.last=log -1 HEAD
+init.defaultbranch=main
+color.ui=auto
+color.branch.current=yellow reverse
+color.branch.local=yellow
+color.branch.remote=green
+color.diff.meta=yellow bold
+color.diff.frag=magenta bold
+color.diff.old=red bold
+color.diff.new=green bold
+color.status.added=yellow
+color.status.changed=green
+color.status.untracked=cyan
+core.editor=code --wait
+core.autocrlf=input
+diff.tool=vscode
+
+
+Now all the initial setup is done. 
+
+
+3. Create a local folder on your workstation: 
+	Example: UnixCommands.
+
+	CD into it and create a local repo inside that UnixCommands folder.
+	
+	git init
+	Run git status --- > to Check the status.
+	
+	Add all your files 
+	
+	Add your files to the staging area: git add .
+	
+	Finally commit all your local changes in your local repo.
+	
+	git commit -m "Your local commit msg goes here"
+	
+	Once done, Now you need to push all your local changes to remote repo which you have created on github (... TestRepo ....)
+	
+	To do this you need to add this remote repo url (...TestRepo...) in your local git setup, since it needs to where to push / pull contents to/from.
+	
+	To do this, 
+	
+	git remote add origin https://github.com/navaneethan-jarvis/TestRepo.git
+	
+	Now the remote repo url is added to local git setup.
+	
+	Now verify the same,
+	
+	git remote -v
+
+	sample Output:	
+	origin	https://github.com/navaneethan-jarvis/TestRepo.git (fetch)
+	origin	https://github.com/navaneethan-jarvis/TestRepo.git (push)
+
+4.  Now your remote repo can be inferred by the name "origin"
+
+    Navigate to the local branch where you have all your code base. (preferably on main 		branch on your local branch)
+    Once you commit all your local changes. Now you are ready to push all your local changes to remote repo (.....TestRepo....)
+    
+    Now type the following command. 
+    git push -u origin main
+	
+	Sample Output:
+	Username for 'https://github.com': navaneethan-jarvis
+	Password for 'https://navaneethan-jarvis@github.com': 
+	remote: Support for password authentication was removed on August 13, 2021. Please 		use a personal access token instead.
+	remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-		for-git-operations/ for more information.
+	fatal: Authentication failed for 'https://github.com/navaneethan-jarvis/TestRepo.git/'
+
+
+If you get above error, please do not panic. Its generally the security measure what github has taken.
+
+	From August 13, 2021, GitHub is no longer accepting account passwords when authenticating Git operations. You need to add a PAT (Personal Access Token) instead, and you can follow the below method to add a PAT on your system.
+	
+	Create Personal Access Token on GitHub:
+	
+From your GitHub account, go to Settings => Developer Settings => Personal Access Token => Generate New Token (Give your password) => Fillup the form => click Generate token => Copy the generated Token, it will be something like ghp_sFhFsSHhTzMDreGRLjmks4Tzuzgthdvfsrta
+
+Now follow below method based on your machine:
+
+For Windows OS :
+
+Go to Credential Manager from Control Panel => Windows Credentials => find git:https://github.com => Edit => On Password replace with with your GitHub Personal Access Token => You are Done
+
+If you don’t find git:https://github.com => Click on Add a generic credential => Internet address will be git:https://github.com and you need to type in your username and password will be your GitHub Personal Access Token => Click Ok and you are done
+
+For Mac OS:
+
+Click on the Spotlight icon (magnifying glass) on the right side of the menu bar. Type Keychain access then press the Enter key to launch the app => In Keychain Access, search for github.com => Find the internet password entry for github.com => Edit or delete the entry accordingly => You are done
+
+For a Linux-based OS :
+
+For Linux, you need to configure the local GIT client with a username and email address,
+
+$ git config --global user.name "your_github_username"
+$ git config --global user.email "your_github_email"
+$ git config -l
+
+Once GIT is configured, we can begin using it to access GitHub. Example:
+
+$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+> Cloning into `Spoon-Knife`...
+$ Username for 'https://github.com' : username
+$ Password for 'https://github.com' : give your personal access token here
+
+Now cache the given record in your computer to remembers the token:
+
+$ git config --global credential.helper cache
+
+If needed, anytime you can delete the cache record by:
+
+$ git config --global --unset credential.helper
+$ git config --system --unset credential.helper
+
+Now try to pull with -v to verify
+
+$ git pull -v
+
+Linux/Debian (Clone as follows):
+
+git clone https://<tokenhere>@github.com/<user>/<repo>.git
+
+
+
+
+
+Now trying pushing / pulling code ...
+
+
+You will see to that it successfully pushes all your local changes to your remote repo (...TestRepo...)
+
+ git push -u origin main
+
+
+
+Username for 'https://github.com': navaneethan.jarvis@gmail.com
+Password for 'https://navaneethan.jarvis@gmail.com@github.com': Type your PAT here..
+
+Sample Output:
+
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 259 bytes | 259.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/navaneethan-jarvis/TestRepo.git
+ * [new branch]      main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
